@@ -1,3 +1,6 @@
+//- [Hero Icons](https://heroicons.com/) all icons from this website
+// all this icons we can export & use as components
+
 export const CartIcon = () => {
   return (
     <svg
