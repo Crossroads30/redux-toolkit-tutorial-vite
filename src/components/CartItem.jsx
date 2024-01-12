@@ -38,7 +38,7 @@ const CartItem = ({ id, title, price, image, amount }) => {
 						if (amount === 1) {
 							dispatch(removeItem(id))
 						}
-						dispatch(toggleAmount({ id, type: 'decrease' }))}} // we pass the payload( is the object!!!)
+						dispatch(toggleAmount({ id, type: 'decrease' }))}} // we pass the payload as object to this dispatch, because we destruct it in this action in cartSlice!!!)
 					type='button'
 					className='amount-btn'
 				>
