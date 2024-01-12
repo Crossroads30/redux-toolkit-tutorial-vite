@@ -7,12 +7,12 @@ import {
 } from '../features/cart/cartSlice'
 import { ChevronDown, ChevronUp } from '../icons'
 
-const CartItem = ({ id, title, price, image, amount }) => {
+const CartItem = ({ id, title, price, img, amount }) => {
 	const dispatch = useDispatch()
 
 	return (
 		<article className='cart-item'>
-			<img src={image} alt={title} />
+			<img src={img} alt={title} />
 			<div>
 				<h4>{title}</h4>
 				<h4 className='item-price'>${price}</h4>
