@@ -4,6 +4,7 @@ import {
 	createSlice,
 } from '@reduxjs/toolkit'
 import axios from 'axios'
+import { openModal } from '../modal/modalSlice'
 // import cartItems from '../../cartItems'
 
 const url = 'https://course-api.com/react-useReducer-cart-project'
@@ -23,14 +24,19 @@ const initialState = {
 // })
 
 //example with axios:
-export const getCartItems = createAsyncThunk('cart/getCartItems', async () => {
+// we can pass some args in our thunc component & we can access it in this async func(...async (name) =>...) as first param
+// we also have access to thunk API as second param!!!
+export const getCartItems = createAsyncThunk('cart/getCartItems', async (name, thunkAPI) => {
 	// first param: sliceType/action itself, second: callback function
 try {
 	const response = await axios(url) // don't forget about 'await'!!!
+	// console.log(name)
+	// console.log(thunkAPI.getState()) // we can access to the entire state!!!
+	// thunkAPI.dispatch(openModal()) // we can access to dispatch!!!
 	// console.log(response)
-	return response.data // in 'axios' we need a 'data' obj from response!!! 
+	return response.data // in 'axios' we need a 'data' obj from response!!!
 } catch (error) {
-	
+	return thunkAPI.rejectWithValue(error.response.data.msg) // we can get special values from thunkAPI!!!
 }
 })
 
@@ -98,7 +104,7 @@ const cartSlice = createSlice({
 				state.cartItems = action.payload
 			})
 			.addCase(getCartItems.rejected, (state, action) => {
-				console.log(action)
+				console.log(action.payload)
 				state.isLoading = false
 			})
 	},
