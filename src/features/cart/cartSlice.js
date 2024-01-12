@@ -14,12 +14,14 @@ const cartSlice = createSlice({
 	reducers: {
 		clearCart: state => {
 			state.cartItems = []
-			// whatever we return from action will become a new state,
-			// so if we omit rest props, they will be gone
-			// return {
-			// cartItems: [],
-			//   }
 		},
+		// whatever we return from action will become a new state,
+		// so if we omit rest props, they will be gone
+		// clearCart: {
+		// return {
+		// cartItems: [],
+		//   }
+		// }
 	},
 })
 
