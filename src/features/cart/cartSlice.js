@@ -8,11 +8,19 @@ const initialState = {
 	isLoading: true,
 }
 
+
 const cartSlice = createSlice({
 	name: 'cart',
 	initialState,
+	reducers: {
+		clearCart: (state) => {
+			state.cartItems = []
+		}
+	}
 })
 
-// console.log(carSlice)
+// console.log(cartSlice)
+export const { clearCart } = cartSlice.actions
 
 export default cartSlice.reducer // it will be cartReducer in 'store.js' 
+
